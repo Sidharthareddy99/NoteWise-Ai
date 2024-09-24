@@ -18,7 +18,7 @@ app = FastAPI(lifespan=lifespan)
 
 origins = [
     "http://localhost:5173",
-    "https://note-wise-ai.vercel.app/"
+    "https://note-wise-ai.vercel.app"
 ]
 
 app.add_middleware(
