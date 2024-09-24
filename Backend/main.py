@@ -8,6 +8,7 @@ from io import BytesIO
 from utils import analyze_image
 from schema import ImageData
 from PIL import Image
+import os
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -48,5 +49,6 @@ async def run(data: ImageData):
     }
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=SERVER_URL, port=int(PORT), reload=(ENV == "dev"))
+    port = int(os.getenv("PORT", 8000))  # Get the PORT environment variable or default to 8000
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
